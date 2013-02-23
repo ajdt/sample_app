@@ -1,12 +1,31 @@
 SampleApp::Application.routes.draw do
-  get "static_pages/home"
+  get "users/new"
 
-  get "static_pages/help"
+  #get "static_pages/home"
+
+  # replaces 		match '/', 'static_pages/home#'
+  root  to: 'static_pages#home'
+
+  #get "static_pages/help"
 
   # manually added pages
-  get "static_pages/about"
-  get "static_pages/contact"
+  #get "static_pages/about"
+  #get "static_pages/contact"
 
+  # named routes
+  # 	will automatically create
+  # 	_url and _path variables refering to routes and full url, which
+  # 	can be used from the views
+  # 	and controllers
+  #
+  # 	ex: for '/about' we have:
+  # 	about_path	=> '/about'
+  # 	about_url	=> 'http://localhost:3000/about'
+  match '/help', to: 'static_pages#help'
+  match '/about', to: 'static_pages#about'
+  match '/contact', to: 'static_pages#contact'
+
+  match '/signup', to: 'users#new'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
